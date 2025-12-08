@@ -12,14 +12,9 @@ provider "azurerm" {
   resource_provider_registrations = "core"
 }
 
-resource "azurerm_resource_group" "contoso_rg" {
-  name     = "${var.prefix}_rg"
-  location = var.region
-  tags     = var.tags
-}
-
-resource "azurerm_resource_group" "contoso_dev_rg" {
-  name     = "${var.prefix}_dev_rg"
+resource "azurerm_resource_group" "demo" {
+  for_each = var.resource_groups
+  name     = "${var.prefix}_${each.value}"
   location = var.region
   tags     = var.tags
 }
