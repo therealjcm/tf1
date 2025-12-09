@@ -5,10 +5,10 @@ resource "azurerm_resource_group" "imported_rg" {
     location = "northeurope"
 }
 
-import {
-    to = azurerm_resource_group.imported_rg
-    id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/rg-unmanaged-1"
-}
+//i mport {
+//     to = azurerm_resource_group.imported_rg
+//    id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/rg-unmanaged-1"
+// }
 
 resource "azurerm_storage_account" "imported_st" {
   resource_group_name               = "rg-unmanaged-1"
@@ -24,8 +24,8 @@ resource "azurerm_storage_account" "imported_st" {
   }
 }
 
-import {
-  to = azurerm_storage_account.imported_st
-  id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/rg-unmanaged-1/providers/Microsoft.Storage/storageAccounts/stheccjcmlab1"
-}
+///import {
+//  to = azurerm_storage_account.imported_st
+//  id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/rg-unmanaged-1/providers/Microsoft.Storage/storageAccounts/stheccjcmlab1"
+//}
 
