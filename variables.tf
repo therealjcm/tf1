@@ -1,4 +1,4 @@
-variable resource_groups {
+variable "resource_groups" {
   type        = map(string)
   description = "The resource groups to deploy"
 }
@@ -22,4 +22,17 @@ variable "region" {
 variable "tags" {
   type        = map(any)
   description = "A map of tags"
+}
+
+variable "virtual_networks" {
+  type = map(object({
+    name               = string
+    resource_group_key = string
+    address_space      = list(string)
+    subnets = map(object({
+      name           = optional(string)
+      address_prefix = string
+    }))
+  }))
+  description = "the virtual networks to deploy"
 }
