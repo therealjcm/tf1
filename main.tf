@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+locals {
+    subnets = cidrsubnets("10.0.0.0/24", 8, 7)
+}
+
 provider "azurerm" {
   features {}
   resource_provider_registrations = "core"
